@@ -1,24 +1,2 @@
-<div class="whole rapper">
-  <h2 class='text'>Create new Food</h2>
-  <%= form_with(model: @food, url: foods_path) do |form| %>
-    <div class='flex flex-col justify-center items-center gap-4'>
-      <div class="field">
-        <%= form.label :name, 'Name: '%>
-        <%= form.text_field :name, placeholder: "Food name", class: "input input-bordered w-full max-w-xs "  %>
-      </div>
-      <div class="field">
-      <%= form.label :measurement_unit, 'Measurement unit: '%>
-         <%= form.select :measurement_unit, [["grams"], ["kilos"], ["liters"], ["milliliters"]], {}, class: "select select-bordered w-full max-w-xs" %>
-      </div>
-      <div class="field">
-      <%= form.label :price, 'Price: '%>
-        <%= form.text_field :price, placeholder: "Price", class: "input input-bordered w-full max-w-xs" %>
-      </div>
-      <div class="field">
-      <%= form.label :name, 'Name: '%>
-        <%= form.text_field :quantity, placeholder: "Quantity", class: "input input-bordered w-full max-w-xs " %>
-      </div>
-      <%= form.submit "Add New Food", class: "btn btn-primary   " %>
-  </div>
-  <% end %>
-</div>
+<h1>Food#show</h1>
+<p>Find me in app/views/food/show.html.erb</p>
