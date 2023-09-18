@@ -1,0 +1,10 @@
+<h1>Public Recipes</h1>
+<ul>
+  <% @public_recipes.each do |recipe| %>
+    <li>
+      <h2><%= recipe.name %></h2>
+      <p><%= recipe.description %></p>
+      <p> by <%= recipe.user.name %>
+    </li>
+  <% end %>
+</ul>
