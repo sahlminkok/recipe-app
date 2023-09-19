@@ -1,7 +1,16 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+user1 = User.create(name: 'Sahal')
+user2 = User.create(name: 'Ahmad')
+user3 = User.create(name: 'Phelelani')
+user4 = User.create(name: 'Nasir')
+user5 = User.create(name: 'Abel')
+
+recipe1 = Recipe.create(name: 'Spaghetti Bolognese', preparation_time: 35, cooking_time: 50, description: 'A classic Italian dish with rich meat sauce served over spaghetti.', user: user1)
+recipe2 = Recipe.create(name: 'Chicken Alfredo', preparation_time: 25, cooking_time: 30, description: ' Creamy Alfredo sauce tossed with tender chicken and fettuccine pasta.', user: user2)
+recipe3 = Recipe.create(name: 'Beef Stir-Fry', preparation_time: 15, cooking_time: 20, description: 'Quick and delicious stir-fried beef with vegetables and soy sauce.', user: user3)
+recipe4 = Recipe.create(name: 'Margherita Pizza', preparation_time: 10, cooking_time: 15, description: 'A simple yet classic pizza topped with tomatoes, mozzarella, and basil.', user: user4)
+recipe5 = Recipe.create(name: 'Vegetable Curry', preparation_time: 20, cooking_time: 35, description: 'A flavorful vegetarian curry with a variety of colorful vegetables and aromatic spices.', user: user5)
+recipe6 = Recipe.create(name: 'Grilled Salmon', preparation_time: 10, cooking_time: 15, description: 'A healthy and delicious grilled salmon dish with a lemon and herb marinade.', user: user1)
+recipe7 = Recipe.create(name: 'Caesar Salad', preparation_time: 15, cooking_time: 0, description: 'A classic Caesar salad with crisp romaine lettuce, croutons, and creamy dressing.', user: user2)
+recipe8 = Recipe.create(name: 'Shrimp Scampi', preparation_time: 20, cooking_time: 15, description: 'Succulent shrimp sautéed with garlic, butter, and white wine, served over pasta.', user: user3)
+recipe9 = Recipe.create(name: 'Vegetarian Lasagna', preparation_time: 30, cooking_time: 45, description: ' Layers of pasta, ricotta cheese, vegetables, and marinara sauce make this vegetarian lasagna a hearty meal.', user: user4)
+recipe10 = Recipe.create(name: 'Chocolate Cake', preparation_time: 20, cooking_time: 30, description: 'A moist and decadent chocolate cake topped with creamy frosting.', user: user5)
