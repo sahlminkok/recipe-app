@@ -1,2 +1,24 @@
-<h1>Foods#show</h1>
-<p>Find me in app/views/food/show.html.erb</p>
+<div class="w-full shadow-lg py-10">
+  <h2 class="text-2xl text-center mb-5">Create new Food</h2>
+  <%= form_with(model: @food, url: foods_path) do |form| %>
+    <div class="container">
+      <div class="form-group">
+        <%= form.label :name, 'Name: ' %>
+        <%= form.text_field :name, placeholder: "Food name", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :measurement_unit, 'Measurement unit: ' %>
+        <%= form.select :measurement_unit, [["grams"], ["kilos"], ["liters"], ["milliliters"]], {}, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :price, 'Price: ' %>
+        <%= form.text_field :price, placeholder: "Price", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :quantity, 'Quantity: ' %>
+        <%= form.text_field :quantity, placeholder: "Quantity", class: "form-control" %>
+      </div>
+      <%= form.submit "Add New Food", class: "btn btn-success" %>
+    </div>
+  <% end %>
+</div>
