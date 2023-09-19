@@ -1,3 +1,8 @@
 body {
   font-family: 'Inter', sans-serif;
 }
+
+.heading-text {
+  letter-spacing: 4px;
+  font-weight: 600;
+}
