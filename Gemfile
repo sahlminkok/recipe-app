@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.2'
 
+gem 'devise'
+
 gem 'bootsnap', require: false
 gem 'importmap-rails'
 gem 'jbuilder'
