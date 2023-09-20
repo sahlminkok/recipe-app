@@ -3,13 +3,15 @@
   <% @public_recipes.each do |recipe| %>
     <div class="d-flex justify-content-between align-items-start bg-primary pt-4 pb-3 mb-2 ps-5 pe-5">
       <div>
-        <h2><%= recipe.name %></h2>
-        <h6> By <%= recipe.user.name %></h6>
+        <%= link_to recipe_path(recipe), class: 'text-white text-decoration-none' do %>
+          <h2><%= recipe.name %></h2>
+          <h6> By <%= recipe.user.name %></h6>
+        <% end %>
       </div>
 
       <div>
         <p>Total Food Items: <%= recipe.total_food_items %></p>
-        <p>Total Price: $<%= number_to_currency(recipe.total_price, unit: '') %></p>
+        <p>Total Price: <%= number_to_currency(recipe.total_price, unit: '$') %></p>
       </div>
     </div>
   <% end %>
