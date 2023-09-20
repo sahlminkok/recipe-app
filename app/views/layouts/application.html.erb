@@ -17,7 +17,9 @@
   </head>
 
   <body class="d-flex flex-column h-100">
-    <div class="container mt-5">
+    <div class="container">
+      <p class="notice text-success"><%= notice %></p>
+      <p class="alert text-danger"><%= alert %></p>
       <%= yield %>
     </div>
 
