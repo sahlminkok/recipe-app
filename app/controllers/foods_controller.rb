@@ -25,7 +25,7 @@ class FoodsController < ApplicationController
     if @food.save
       redirect_to root_path
     else
-      redirect_to root_path, alert: 'Failed to create food'
+      render 'new'
     end
   end
 
