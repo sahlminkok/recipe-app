@@ -1,0 +1,32 @@
+<div class="container">
+  <h1 class="text-center display-4">Shopping List</h1>
+  <div class="d-flex justify-content-between">
+    <div class="h2">Amount of food items to buy: <span class="h3"><%= @foods.length %></span></div>
+    <div class="h2">Total value of food needed: <span class="h3">$ <%= @total_price * -1 %></span></div>
+  </div>
+
+  <div>
+    <% if @foods.length.zero? %>
+      <h2 class="text-center h4 bg-success text-white">All ingredients are set to make the recipe!</h2>
+    <% else %>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr class="h2">
+            <th>Food</th>
+            <th>Quantity</th>
+            <th>Total price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @foods.each do |food| %>
+            <tr>
+              <td><%= food[:name] %></td>
+              <td><%= food[:quantity] * -1 %></td>
+              <td><%= food[:price] * -1 %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>
