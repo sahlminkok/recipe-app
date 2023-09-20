@@ -6,4 +6,14 @@
       <p>Cooking time: <%= @recipe.cooking_time %> minutes</p>
       <p>Steps goes here...</p>
     </div>
+    <div>
+      <%= form_for @recipe, url: toggle_public_recipe_path(@recipe), method: :patch, remote: true, class: 'toggle-form' do |f| %>
+        <%= f.hidden_field :authenticity_token, value: form_authenticity_token %>
+        <span>Public<span>
+        <label class="switch">
+          <%= f.check_box :public, { class: 'form-check-input', onchange: 'this.form.submit();' }, true, false %>
+          <span class="slider round"></span>
+        </label>
+      <% end %>
+    </div>
   </div>
