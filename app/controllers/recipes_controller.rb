@@ -3,7 +3,9 @@ class RecipesController < ApplicationController
     @recipes = current_user.recipes
   end
 
-  def show; end
+  def show
+    @recipe = Recipe.find_by(id: params[:id])
+  end
 
   def destroy
     @recipe = current_user.recipes.find_by(id: params[:id])
