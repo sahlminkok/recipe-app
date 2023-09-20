@@ -1,13 +1,12 @@
 body {
   font-family: 'Inter', sans-serif;
-   background-color: rgb(182, 156, 206);
+  background-color: rgb(182, 156, 206);
 }
 
 .heading-text {
   letter-spacing: 4px;
   font-weight: 600;
 }
-
 
 .container {
   width: 80%;
