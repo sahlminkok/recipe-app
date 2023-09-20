@@ -1,5 +1,5 @@
-<h2 class="text-secondary text-center">Log in</h2>
-<div class="w-50 mx-auto">
+<div class="w-50 mx-auto bg-white p-5 pt-3 shadow">
+  <h2 class="text-secondary text-center">Log in</h2>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form text-secondary mb-2' }) do |f| %>
     <div class="form-group">
       <%= f.label :email, class: 'control-label mt-2' %>
