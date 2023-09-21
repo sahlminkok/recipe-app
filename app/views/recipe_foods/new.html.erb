@@ -1,0 +1,21 @@
+<h1>Add Food to Recipe</h1>
+
+<%= form_for @recipe_food, url: recipe_recipe_foods_path(@recipe_food.recipe), method: :post, remote: true do |f| %>
+  <div class="form-group">
+    <%= f.label :food_id, 'Select Food' %>
+    <%= f.collection_select :food_id, Food.all, :id, :name, {}, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :quantity, 'Quantity' %>
+    <%= f.number_field :quantity, class: 'form-control' %>
+  </div>
+
+  <%= f.hidden_field :recipe_id, value: @recipe.id %>
+
+  <div class="form-group">
+    <%= f.submit 'Add Food', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<%= link_to 'Back to Recipe', recipe_path(@recipe_food.recipe), class: 'btn btn-secondary' %>
