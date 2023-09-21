@@ -9,7 +9,6 @@ gem 'faker'
 
 gem 'webdrivers'
 
-
 gem 'cancancan'
 
 gem 'bootsnap', require: false
