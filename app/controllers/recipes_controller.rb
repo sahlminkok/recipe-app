@@ -5,7 +5,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-  @recipe = current_user.recipes.find(params[:id])
+    @recipe = current_user.recipes.find(params[:id])
   end
 
   def destroy
