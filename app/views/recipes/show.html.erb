@@ -7,13 +7,15 @@
       <p>Steps goes here...</p>
     </div>
     <div>
-      <%= form_for @recipe, url: toggle_public_recipe_path(@recipe), method: :patch, remote: true, class: 'toggle-form' do |f| %>
-        <%= f.hidden_field :authenticity_token, value: form_authenticity_token %>
-        <span>Public<span>
-        <label class="switch">
-          <%= f.check_box :public, { class: 'form-check-input', onchange: 'this.form.submit();' }, true, false %>
-          <span class="slider round"></span>
-        </label>
+      <% if can?(:manage, @recipe) %>
+        <%= form_for @recipe, url: toggle_public_recipe_path(@recipe), method: :patch, remote: true, class: 'toggle-form' do |f| %>
+          <%= f.hidden_field :authenticity_token, value: form_authenticity_token %>
+          <span>Public<span>
+          <label class="switch">
+            <%= f.check_box :public, { class: 'form-check-input', onchange: 'this.form.submit();' }, true, false %>
+            <span class="slider round"></span>
+          </label>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -21,8 +23,9 @@
   <div class="border-bottom border-primary border-2 pb-3">
     <div class="d-flex justify-content-between">
       <%= link_to 'Generate shopping list', general_shopping_list_path, class: 'btn btn-primary' %>
-      <%= link_to 'Add Food', new_recipe_recipe_food_path(@recipe), class: 'btn btn-primary' %>
-  </div>
+      <% if can? :manage, @recipe %>
+        <%= link_to 'Add Food', new_recipe_recipe_food_path(@recipe), class: 'btn btn-primary' %>
+      <% end %>
     </div>
   </div>
 
@@ -43,7 +46,9 @@
             <td class="border  border-black p-1"><%= recipe_food.quantity %></td>
             <td class="border  border-black p-1">$<%= recipe_food.price %></td>
             <td class="border  border-black p-1">
-              <%= link_to "Delete", recipe_food, class: "btn btn-outline-danger", method: :delete, data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" } %>
+              <% if can? :manage, recipe_food %>
+                <%= link_to "Delete", recipe_food, class: "btn btn-outline-danger", method: :delete, data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" } %>
+              <% end %>
             </td>
           </tr>
         <% end %>
