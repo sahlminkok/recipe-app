@@ -9,7 +9,8 @@ RSpec.describe 'Recipes', type: :request do
 
     it 'assigns recipes for the current user to @recipes' do
       user = User.create(name: 'John', email: 'john@example.com', password: 'password')
-      recipe = user.recipes.create(name: 'Recipe 1', preparation_time: 30, cooking_time: 60, description: 'Delicious recipe')
+      recipe = user.recipes.create(name: 'Recipe 1', preparation_time: 30, cooking_time: 60,
+                                   description: 'Delicious recipe')
 
       sign_in user
       get recipes_path
@@ -63,7 +64,9 @@ RSpec.describe 'Recipes', type: :request do
         sign_in user
 
         expect do
-          post recipes_path, params: { recipe: { name: 'Recipe 1', preparation_time: 30, cooking_time: 60, description: 'Delicious recipe' } }
+          post recipes_path,
+               params: { recipe: { name: 'Recipe 1', preparation_time: 30, cooking_time: 60,
+                                   description: 'Delicious recipe' } }
         end.to change(Recipe, :count).by(1)
 
         expect(response).to redirect_to(recipe_path(Recipe.last))
@@ -77,7 +80,9 @@ RSpec.describe 'Recipes', type: :request do
         sign_in user
 
         expect do
-          post recipes_path, params: { recipe: { name: '', preparation_time: nil, cooking_time: nil, description: 'Delicious recipe' } }
+          post recipes_path,
+               params: { recipe: { name: '', preparation_time: nil, cooking_time: nil,
+                                   description: 'Delicious recipe' } }
         end.not_to change(Recipe, :count)
 
         expect(response).to render_template(:new)
@@ -89,7 +94,8 @@ RSpec.describe 'Recipes', type: :request do
   describe 'DELETE /destroy' do
     it 'deletes a recipe' do
       user = User.create(name: 'John', email: 'john@example.com', password: 'password')
-      recipe = user.recipes.create(name: 'Recipe 1', preparation_time: 30, cooking_time: 60, description: 'Delicious recipe')
+      recipe = user.recipes.create(name: 'Recipe 1', preparation_time: 30, cooking_time: 60,
+                                   description: 'Delicious recipe')
       sign_in user
 
       expect do
@@ -102,7 +108,8 @@ RSpec.describe 'Recipes', type: :request do
 
     it 'redirects to recipes path if recipe could not be deleted' do
       user = User.create(name: 'John', email: 'john@example.com', password: 'password')
-      recipe = user.recipes.create(name: 'Recipe 1', preparation_time: 30, cooking_time: 60, description: 'Delicious recipe')
+      recipe = user.recipes.create(name: 'Recipe 1', preparation_time: 30, cooking_time: 60,
+                                   description: 'Delicious recipe')
       sign_in user
 
       allow_any_instance_of(Recipe).to receive(:destroy).and_return(false)
@@ -110,7 +117,7 @@ RSpec.describe 'Recipes', type: :request do
       delete recipe_url(recipe)
 
       expect(response).to redirect_to(recipes_path)
-      expect(flash[:alert]).to eq('Error: Recipe could not be deleted'
+      expect(flash[:alert]).to eq('Error: Recipe could not be deleted')
     end
   end
 
