@@ -1,11 +1,29 @@
 class ShoppingListsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @current_user = current_user
     @foods = []
     @total_price = 0
 
+
     current_user.recipes.includes([:recipe_foods]).each do |recipe|
       process_recipe(recipe)
+
+    flag = true
+
+    current_user.recipes.includes([:recipe_foods]).each do |recipe|
+      recipe.recipe_foods.each do |food|
+        q = RecipeFood.find_by(food_id: food.id).quantity
+        f = current_user.foods.find(food.id)
+        next unless (f.quantity - q).negative? && flag
+
+        @foods << {
+          name: f.name,
+          quantity: (q - f.quantity),
+          price: f.price * (q - f.quantity)
+        }
+      end
+
     end
 
     @foods.each { |f| @total_price += f[:price] }

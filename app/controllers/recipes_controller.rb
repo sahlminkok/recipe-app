@@ -1,11 +1,16 @@
 class RecipesController < ApplicationController
+
   skip_before_action :verify_authenticity_token, only: [:toggle_public]
+
+
+  before_action :authenticate_user!
 
   def index
     @recipes = current_user.recipes
   end
 
   def show
+
     @recipe = Recipe.find_by(id: params[:id])
     @recipe_foods = @recipe.foods.includes(:recipe_foods)
   end
@@ -23,6 +28,9 @@ class RecipesController < ApplicationController
       flash[:alert] = 'Recipe could not be created'
       render :new
     end
+
+    @recipe = current_user.recipes.find(params[:id])
+
   end
 
   def destroy
