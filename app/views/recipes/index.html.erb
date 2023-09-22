@@ -6,7 +6,9 @@
         <%= link_to recipe_path(recipe), class: 'link text-white text-decoration-none' do %>
           <h2><%= recipe.name %></h2>
         <% end %>
-        <%= link_to 'Delete', recipe_path(recipe), data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this recipe?' }, class: 'btn btn-outline-warning' %>
+        <% if can? :manage, recipe %>
+          <%= link_to 'Delete', recipe_path(recipe), data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this recipe?' }, class: 'btn btn-outline-warning' %>
+        <% end %>
       </div>
       <div class="w-50">
         <p><%= recipe.description %></p>
