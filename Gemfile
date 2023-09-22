@@ -11,6 +11,9 @@ gem 'webdrivers'
 
 gem 'cancancan'
 
+
+
+
 gem 'bootsnap', require: false
 gem 'importmap-rails'
 gem 'jbuilder'
@@ -25,6 +28,8 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'rspec-rails', '6.0.3'
+  gem 'shoulda-matchers', '~> 5.0'
 end
 
 group :development do
