@@ -11,7 +11,7 @@ gem 'webdrivers'
 
 gem 'cancancan'
 
-
+gem 'rails-controller-testing'
 
 
 gem 'bootsnap', require: false
