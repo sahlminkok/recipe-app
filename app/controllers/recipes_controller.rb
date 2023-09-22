@@ -10,6 +10,21 @@ class RecipesController < ApplicationController
     @recipe_foods = @recipe.foods.includes(:recipe_foods)
   end
 
+  def new
+    @recipe = Recipe.new
+  end
+
+  def create
+    @recipe = current_user.recipes.build(recipe_params)
+
+    if @recipe.save
+      redirect_to recipe_path(@recipe), notice: 'Recipe created successfully!'
+    else
+      flash[:alert] = 'Recipe could not be created'
+      render :new
+    end
+  end
+
   def destroy
     @recipe = current_user.recipes.find_by(id: params[:id])
 
@@ -34,5 +49,11 @@ class RecipesController < ApplicationController
         format.js
       end
     end
+  end
+
+  private
+
+  def recipe_params
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
   end
 end
