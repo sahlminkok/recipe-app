@@ -18,7 +18,7 @@
           <td class="border  border-black p-1"><%= food.name %></td>
           <td class="border border-black p-1"><%= food.measurement_unit %></td>
           <td class="border border-black p-1"><%= food.quantity %></td>
-          <td class="border border-black p-1"><%= food.price %></td>
+          <td class="border border-black p-1">$<%= food.price %></td>
           <td class="border border-black p-1">
             <%= button_to 'Delete', food_path(food.id), method: :delete, class: 'btn btn-outline-danger' %>
           </td>
