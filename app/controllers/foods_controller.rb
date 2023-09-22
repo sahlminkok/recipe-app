@@ -1,4 +1,5 @@
 class FoodsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @user = current_user
     @foods = @user.foods
@@ -10,6 +11,7 @@ class FoodsController < ApplicationController
 
   def new
     @food = Food.new
+    @foods = current_user.foods.all
   end
 
   def create
