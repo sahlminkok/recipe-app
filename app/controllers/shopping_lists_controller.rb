@@ -1,9 +1,10 @@
 class ShoppingListsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @current_user = current_user
     @foods = []
     @total_price = 0
-    flag = 0
+    flag = true
 
     current_user.recipes.includes([:recipe_foods]).each do |recipe|
       recipe.recipe_foods.each do |food|
@@ -13,8 +14,8 @@ class ShoppingListsController < ApplicationController
 
         @foods << {
           name: f.name,
-          quantity: f.quantity - 1,
-          price: f.price * (f.quantity - 1)
+          quantity: (q - f.quantity),
+          price: f.price * (q - f.quantity)
         }
       end
     end
