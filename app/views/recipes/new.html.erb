@@ -1,0 +1,37 @@
+<div class="w-50 mx-auto bg-white p-5 pt-3 shadow">
+  <h1>Create a New Recipe</h1>
+
+  <%= form_for @recipe, class: 'form' do |f| %>
+    <div class="form-group">
+      <%= f.label :name, 'Recipe Name' %>
+      <%= f.text_field :name, class: 'form-control', required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :preparation_time, 'Preparation Time (minutes)' %>
+      <%= f.number_field :preparation_time, class: 'form-control', required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :cooking_time, 'Cooking Time (minutes)' %>
+      <%= f.number_field :cooking_time, class: 'form-control', required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description, 'Description' %>
+      <%= f.text_area :description, class: 'form-control', rows: 4, required: true %>
+    </div>
+
+    <div class="form-group form-check">
+      <%= f.check_box :public, class: 'form-check-input' %>
+      <%= f.label :public, class: 'form-check-label' do %>
+        Public Recipe
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit 'Create Recipe', class: 'btn btn-primary' %>
+      <%= link_to 'Cancel', all_recipes_path, class: 'btn btn-secondary' %>
+    </div>
+  <% end %>
+</div>

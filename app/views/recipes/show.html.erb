@@ -1,2 +1,53 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<h1 class="text-center text-primary text-uppercase heading-text mb-3">Recipe <%= @recipe.id %></h1>
+<div class="d-flex flex-column gap-3">
+  <div class="d-flex align-items-baseline justify-content-between lead">
+    <div class="d-flex flex-column gap-2">
+      <p>Preparation time: <%= @recipe.preparation_time %> minutes</p>
+      <p>Cooking time: <%= @recipe.cooking_time %> minutes</p>
+      <p>Steps goes here...</p>
+    </div>
+    <div>
+      <%= form_for @recipe, url: toggle_public_recipe_path(@recipe), method: :patch, remote: true, class: 'toggle-form' do |f| %>
+        <%= f.hidden_field :authenticity_token, value: form_authenticity_token %>
+        <span>Public<span>
+        <label class="switch">
+          <%= f.check_box :public, { class: 'form-check-input', onchange: 'this.form.submit();' }, true, false %>
+          <span class="slider round"></span>
+        </label>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="border-bottom border-primary border-2 pb-3">
+    <div class="d-flex justify-content-between">
+      <%= link_to 'Generate shopping list', general_shopping_list_path, class: 'btn btn-primary' %>
+      <%= link_to 'Add Food', new_recipe_recipe_food_path(@recipe), class: 'btn btn-primary' %>
+  </div>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <table class="table border w-full">
+      <thead class="border border-black table-dark">
+        <tr class="border text-2xl">
+          <th class="border p-2">Food</th>
+          <th class="border p-2">Quantity</th>
+          <th class="border p-2">Value</th>
+          <th class="border p-2">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="border border-black">
+        <% @recipe_foods.each do |recipe_food| %>
+          <tr class="border border-black">
+            <td class="border  border-black p-1"><%= recipe_food.name %></td>
+            <td class="border  border-black p-1"><%= recipe_food.quantity %></td>
+            <td class="border  border-black p-1">$<%= recipe_food.price %></td>
+            <td class="border  border-black p-1">
+              <%= link_to "Delete", recipe_food, class: "btn btn-outline-danger", method: :delete, data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    <table>
+  <div>
+</div>
