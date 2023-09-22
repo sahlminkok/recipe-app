@@ -19,7 +19,6 @@ RSpec.describe 'Recipes', type: :feature do
       expect(page).to have_content(@recipe.description)
     end
 
-
     it 'renders remove button' do
       expect(page).to have_link('Delete', href: recipe_path(@recipe))
     end
