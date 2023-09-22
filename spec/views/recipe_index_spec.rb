@@ -20,7 +20,7 @@ RSpec.describe 'Recipes', type: :feature do
     end
 
 
-      it 'renders remove button' do
+    it 'renders remove button' do
       expect(page).to have_link('Delete', href: recipe_path(@recipe))
     end
 
