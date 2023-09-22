@@ -13,7 +13,6 @@ gem 'cancancan'
 
 gem 'rails-controller-testing'
 
-
 gem 'bootsnap', require: false
 gem 'importmap-rails'
 gem 'jbuilder'

@@ -38,7 +38,6 @@ RSpec.describe Food, type: :model do
       expect(@food.errors[:price]).to include("can't be blank")
     end
 
-
     it 'requires price to be numeric' do
       @food.price = 'abc'
       expect(@food).to_not be_valid
