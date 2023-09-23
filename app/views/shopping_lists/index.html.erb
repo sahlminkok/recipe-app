@@ -7,14 +7,14 @@
 
   <div>
     <% if @foods.length.zero? %>
-      <h2 class="text-center h4 bg-success text-white">All ingredients are set to make the recipe!</h2>
+    <h2 class="mt-4">List Table</h2>
     <% else %>
-      <table class="table table-bordered table-striped">
-        <thead>
+      <table class="table table-bordered table-striped mt-4">
+        <thead class="thead-dark">
           <tr class="h2">
             <th>Food</th>
             <th>Quantity</th>
-            <th>Total price</th>
+            <th>Price</th>
           </tr>
         </thead>
         <tbody>
