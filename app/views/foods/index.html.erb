@@ -1,0 +1,31 @@
+<div class="w-full">
+  <div class="d-flex justify-content-end mb-3">
+    <%= link_to 'Add Food', new_food_path(params[:user_id]), class: 'btn btn-primary' %>
+  </div>
+  <table class="table border w-full">
+    <thead class="border border-black table-dark">
+      <tr class="border text-2xl">
+        <th class="border p-2">Food</th>
+        <th class="border p-2">Measurement unit</th>
+        <th class="border p-2">Unit price</th>
+        <th class="border p-2">Quantity</th>
+        <th class="border p-2">Actions</th>
+      </tr>
+    </thead>
+    <tbody class="border border-black">
+      <% @foods.each do |food| %>
+        <tr class="border border-black">
+          <td class="border  border-black p-1"><%= food.name %></td>
+          <td class="border border-black p-1"><%= food.measurement_unit %></td>
+          <td class="border border-black p-1"><%= food.quantity %></td>
+          <td class="border border-black p-1">$<%= food.price %></td>
+          <td class="border border-black p-1">
+            <% if can? :manage, food %>
+              <%= button_to 'Delete', food_path(food.id), method: :delete, class: 'btn btn-outline-danger' %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
